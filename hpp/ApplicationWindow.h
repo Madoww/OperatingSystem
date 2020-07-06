@@ -2,16 +2,33 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+class WindowBackground
+{
+public:
+	WindowBackground(int height, int width);
+	sf::Vector2f getPosition() { return background.getPosition(); }
+
+	sf::RectangleShape background;
+	sf::RectangleShape topBar;
+};
+
 class ApplicationWindow
 {
 public:
 	ApplicationWindow(int windowID, int height = 64, int width = 64);
 	const int getWindowID() { return m_windowID; }
-	void Draw(sf::Drawable& thing);
-	const std::vector<sf::Drawable*> GetThingsToDraw() { return thingsToDraw; }
-	void ClearDrawBuffer() { thingsToDraw.clear(); }
+	template <typename T>
+	void Draw(T& thing)
+	{
+		thing.setOrigin(-m_windowBackground.getPosition());
+		drawBuffer.push_back(&thing);
+	}
+	const std::vector<sf::Drawable*> GetDrawBuffer() { return drawBuffer; }
+	void ClearDrawBuffer();
 private:
-	sf::RectangleShape m_windowBackground;
-	std::vector<sf::Drawable*> thingsToDraw;
 	int m_windowID;
+	WindowBackground m_windowBackground;
+	std::vector<sf::Drawable*> drawBuffer;
+
 };
+

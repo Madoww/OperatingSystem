@@ -15,7 +15,7 @@ public:
 	}
 	void CloseWindowWithID(int windowID);
 	void Update();
-	ApplicationWindow* const OpenWindow();
+	ApplicationWindow* const OpenWindow(int width, int height);
 	int ID = 1;
 private:
 	UserInterface();

@@ -4,4 +4,5 @@
 void TaskManager::UpdateAllTasks()
 {
 	calc.Draw();
+	calc.Update();
 }
