@@ -7,6 +7,7 @@ public:
 	CalculatorApp()
 	{
 		shape.setSize(sf::Vector2f(30, 30));
+        shape.setFillColor(sf::Color::Green);
 		circle.setRadius(15);
 		circle.setPosition(60, 40);
 		circle.setFillColor(sf::Color::Red);
@@ -16,13 +17,13 @@ public:
 	}
 	void Draw() override
 	{
-		//appWindow->Draw(shape);
+		appWindow->Draw(shape);
 		appWindow->Draw(circle);
 		appWindow->Draw(sprite);
 	}
 	void Update() override
 	{
-		
+        
 	}
 	sf::RectangleShape shape;
 	sf::CircleShape circle;

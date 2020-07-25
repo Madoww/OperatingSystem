@@ -13,5 +13,5 @@ protected:
 	virtual ~InternalApplication() 
 	{
 		UserInterface::instance().CloseWindowWithID(appWindow->getWindowID());
-	}
+    }
 };

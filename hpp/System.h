@@ -3,6 +3,13 @@
 #include "UserInterface.h"
 #include "TaskManager.h"
 
+enum SystemStatus
+{
+    Initializing,
+    Running,
+    Closing
+};
+
 class System
 {
 public:
@@ -13,11 +20,16 @@ public:
 		static System sys;
 		return sys;
 	}
+    
+    sf::RenderWindow& GetSystemWindow() { return systemWindow; }
+    
 	void StartSystem();
-	void Run();
-	
 private:
-	System();
-	UserInterface& userInterface = UserInterface::instance();
-	TaskManager& taskManager = TaskManager::instance();
+    void Run();
+    System();
+    UserInterface& userInterface = UserInterface::instance();
+    TaskManager& taskManager = TaskManager::instance();
+    sf::RenderWindow systemWindow;
+    SystemStatus status;
+    sf::Event windowEvent;
 };

@@ -19,6 +19,5 @@ public:
 	int ID = 1;
 private:
 	UserInterface();
-	sf::RenderWindow m_window;
 	std::deque<ApplicationWindow> openWindows;
 };
